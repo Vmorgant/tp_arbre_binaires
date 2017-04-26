@@ -1,0 +1,197 @@
+Question 1
+
+Pour le fichier dictionnaire.fich avec 10 recherches :
+
+		-------------------- Statistiques Chargement --------------------
+		
+		Taille dictionnaire = 65398 mots
+		
+		Nb de comparaisons
+		   - Total = 0
+		   - Moyen = 0.00
+		
+		Temps de chargement = 13079 microsecondes
+		
+		----------------------------------------------------------------
+		
+		
+		-------------------- Statistiques Recherches --------------------
+		
+		Taille dictionnaire = 65398 mots
+		
+		Nb de recherches demandees      =      10
+		   - Nb de recherches positives =       4 
+		   - Nb de recherches negatives =       6 
+		
+		Nb de comparaisons
+		   - Total = 125656
+		   - Moyen = 12565.60
+		
+		Temps de recherche = 1935 microsecondes
+		
+		----------------------------------------------------------------
+		
+		
+		-------------------- Statistiques Suppressions --------------------
+		
+		Taille dictionnaire = 65398 mots
+		
+		Nb de suppressions demandees      =      10
+		   - Nb de suppressions positives =      10 
+		   - Nb de suppressions negatives =       0 
+		
+		Nb de comparaisons
+		   - Total = 365030
+		   - Moyen = 36503.00
+		
+		Temps de recherche = 6172 microsecondes
+		
+		----------------------------------------------------------------
+
+Pour le fichier dictionnaire.fich avec 100 recherches :
+
+		-------------------- Statistiques Chargement --------------------
+		
+		Taille dictionnaire = 65398 mots
+		
+		Nb de comparaisons
+		   - Total = 0
+		   - Moyen = 0.00
+		
+		Temps de chargement = 13122 microsecondes
+		
+		----------------------------------------------------------------
+		
+		
+		-------------------- Statistiques Recherches --------------------
+		
+		Taille dictionnaire = 65398 mots
+		
+		Nb de recherches demandees      =     100
+		   - Nb de recherches positives =      55 
+		   - Nb de recherches negatives =      45 
+		
+		Nb de comparaisons
+		   - Total = 1552028
+		   - Moyen = 15520.28
+		
+		Temps de recherche = 23457 microsecondes
+		
+		----------------------------------------------------------------
+		
+		
+		-------------------- Statistiques Suppressions --------------------
+		
+		Taille dictionnaire = 65398 mots
+		
+		Nb de suppressions demandees      =     100
+		   - Nb de suppressions positives =     100 
+		   - Nb de suppressions negatives =       0 
+		
+		Nb de comparaisons
+		   - Total = 3336002
+		   - Moyen = 33360.02
+		
+		Temps de recherche = 56889 microsecondes
+		
+		----------------------------------------------------------------
+		
+Pour le fichier mini_dictionnaire.fich avec 10 recherches :
+			
+	-------------------- Statistiques Chargement --------------------
+	
+	Taille dictionnaire = 4670 mots
+	
+	Nb de comparaisons
+	   - Total = 0
+	   - Moyen = 0.00
+	
+	Temps de chargement = 1229 microsecondes
+	
+	----------------------------------------------------------------
+	
+	
+	-------------------- Statistiques Recherches --------------------
+	
+	Taille dictionnaire = 4670 mots
+	
+	Nb de recherches demandees      =      10
+	   - Nb de recherches positives =       4 
+	   - Nb de recherches negatives =       6 
+	
+	Nb de comparaisons
+	   - Total = 10415
+	   - Moyen = 1041.50
+	
+	Temps de recherche = 182 microsecondes
+	
+	----------------------------------------------------------------
+	
+	
+	-------------------- Statistiques Suppressions --------------------
+	
+	Taille dictionnaire = 4670 mots
+	
+	Nb de suppressions demandees      =      10
+	   - Nb de suppressions positives =      10 
+	   - Nb de suppressions negatives =       0 
+	
+	Nb de comparaisons
+	   - Total = 25966
+	   - Moyen = 2596.60
+	
+	Temps de recherche = 474 microsecondes
+	
+	----------------------------------------------------------------
+
+Pour le fichier mini_dictionnaire.fich avec 100 recherches :
+
+	-------------------- Statistiques Chargement --------------------
+	
+	Taille dictionnaire = 4670 mots
+	
+	Nb de comparaisons
+	   - Total = 0
+	   - Moyen = 0.00
+	
+	Temps de chargement = 1294 microsecondes
+	
+	----------------------------------------------------------------
+	
+	
+	-------------------- Statistiques Recherches --------------------
+	
+	Taille dictionnaire = 4670 mots
+	
+	Nb de recherches demandees      =     100
+	   - Nb de recherches positives =      51 
+	   - Nb de recherches negatives =      49 
+	
+	Nb de comparaisons
+	   - Total = 125076
+	   - Moyen = 1250.76
+	
+	Temps de recherche = 1927 microsecondes
+	
+	----------------------------------------------------------------
+	
+	
+	-------------------- Statistiques Suppressions --------------------
+	
+	Taille dictionnaire = 4670 mots
+	
+	Nb de suppressions demandees      =     100
+	   - Nb de suppressions positives =      98 
+	   - Nb de suppressions negatives =       2 
+	
+	Nb de comparaisons
+	   - Total = 239558
+	   - Moyen = 2395.58
+	
+	Temps de recherche = 4043 microsecondes
+	
+	----------------------------------------------------------------
+	
+Conclusion
+	En multipliant par 10 le nombre de recherche le temps de recherche passe de 1935 microsecondes à 23457 microsecondes.
+	L'ordre de l'algorithme de recherche est donc exponentielle.
