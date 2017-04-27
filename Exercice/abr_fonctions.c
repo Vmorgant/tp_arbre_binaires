@@ -34,9 +34,11 @@ err_t abr_dicho_creer( abr_t ** arbre ,
 		       int (*fonction_comparaison) ( const void * e1 , const void * e2) ,
 		       liste_t * liste )
 { 
-  *arbre=abr_creer(fonction_affectation,fonction_destruction,fonction_comparaison);
+  
   int i;
+  *arbre=abr_creer(fonction_affectation,fonction_destruction,fonction_comparaison);
   for (i=0;i<liste_nb_lire(liste);i++){
+  	 
       void *elem=NULL;
       elem=liste_elem_lire( liste ,i );
       abr_inserer(*arbre,elem);

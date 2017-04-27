@@ -23,14 +23,14 @@ int abr_taille_lire( const abr_t * arbre )
 extern
 err_t abr_taille_incrementer( abr_t * arbre ) 
 {
-  arbre->taille++;
+  (arbre->taille)++;
   return(OK);
 }
 
 extern
 err_t abr_taille_decrementer( abr_t * arbre ) 
 {
-  arbre->taille--;
+  (arbre->taille)--;
   return(OK);
 }
 
@@ -143,29 +143,33 @@ void abr_afficher( const abr_t * arbre ,
 		  void (*fonction_affichage)(const void *) ,
 		  const ab_parcours_t parcours ) 
 {
+		printf("Affichage de %i elements \n", arbre->taille);
         abr_afficher_bis(arbre->racine, fonction_affichage, parcours, 0);
 }
 
-extern
-err_t abr_inserer_bis(abr_t *arbre, noeud_t * noeud ,
-		   void * etiquette ) 
+static
+err_t abr_inserer_bis(abr_t *arbre, noeud_t * noeud,void * etiquette ) /*tmp = NULL à chaque appel*/
 { 
-	    int cmp=arbre->comparer(etiquette,arbre->racine->etiquette);
-	    
+	    int cmp=arbre->comparer(&(etiquette),(&(noeud->etiquette)));
+	    noeud_t * tmp=NULL;
+	    tmp=noeud_creer(etiquette,NULL,NULL,arbre->affecter);
 		if(noeud_feuille(noeud)){
-				arbre->affecter(etiquette,noeud->etiquette);
+				noeud=tmp;
+				abr_taille_incrementer(arbre);
+				printf("Ajout %i \n",arbre->taille);
 				return(OK);
 		}
 		if(cmp==0)
 			return -1; 
 		else if(cmp <0){
 			abr_inserer_bis(arbre,noeud->gauche,etiquette);
-                        return(OK);
-                }
+            return(OK);
+        }
 		else{
 			abr_inserer_bis(arbre,noeud->droit,etiquette);
-                        return(OK);
-}	        }
+			return(OK);
+		}
+}
 /*
  * Insertion d'une valeur dans un ABR
  */
@@ -175,12 +179,14 @@ err_t abr_inserer( abr_t * arbre  ,
 		   void * etiquette ) 
 { 
 	noeud_t * noeud;
+	
 	if(abr_vide(arbre)){
 		noeud=noeud_creer(etiquette,NULL,NULL,arbre->affecter);
 		arbre->racine=noeud;
+		abr_taille_incrementer(arbre);
+		printf("Ajout %i\n",arbre->taille);
 	}
 	else{
-		
 		abr_inserer_bis(arbre,arbre->racine,etiquette);
 		
 	}

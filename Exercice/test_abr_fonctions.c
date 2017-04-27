@@ -31,7 +31,7 @@ main(int argc , char * argv[] )
     }
 
   /*exp_n = atof(argv[1]) ;*/
-  N = 3/*powf( 2 , exp_n ) - 1*/ ; 
+  N = 16/*powf( 2 , exp_n ) - 1*/ ; 
 
   printf( "\n\nDebut du programme de test sur les fonctions utilisateurs du type abr_t avec %d individus\n"  , (int)N ) ; 
 
