@@ -15,7 +15,7 @@ main(int argc , char * argv[] )
   noeud_t ** noeuds = NULL ; 
   abr_t * arbre = NULL ; 
 
-  /*float exp_n = 0 ; */
+  float exp_n = 0 ; 
   float N = 0 ; 
 
   int i ; 
@@ -30,8 +30,8 @@ main(int argc , char * argv[] )
       exit(1) ;
     }
 
-  /*exp_n = atof(argv[1]) ;*/
-  N = 16/*powf( 2 , exp_n ) - 1*/ ; 
+  exp_n = atof(argv[1]) ;
+  N = powf( 2 , exp_n ) - 1 ; 
 
   printf( "\n\nDebut du programme de test sur les fonctions utilisateurs du type abr_t avec %d individus\n"  , (int)N ) ; 
 
