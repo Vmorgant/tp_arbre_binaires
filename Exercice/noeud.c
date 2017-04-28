@@ -126,9 +126,8 @@ void noeud_afficher( const noeud_t * noeud ,
 		     	 void (*afficher)(const void *),
 		     	 int profondeur) 
 {
-	  int i;
-
-  if(!noeud_existe(noeud))
+	int i;
+	if(!noeud_existe(noeud))
   	  return;
   
 		for(i=0 ; i<profondeur ; i++){
@@ -189,11 +188,28 @@ booleen_t noeud_rechercher( noeud_t ** result ,
  */
  
 extern err_t noeud_inserer( noeud_t * noeud ,			           /* noeud a inserer */  
-			    noeud_t ** racine  ,	                   /* Racine de l'arbre de recherche (peut etre modifiee) */
+			    noeud_t * racine  ,	                   /* Racine de l'arbre de recherche (peut etre modifiee) */
 			    int (*comparer)(const void * n1 , const void * n2) ,       /* Fonction de comparaison des etiquettes */
 			    err_t (*affecter)( void * e1 , void * e2 ) )  /* Fonction d'affectation des etiquettes */ 
 {
-  return(OK)  ;
+	int cmp=comparer(noeud->etiquette,racine->etiquette);	
+	if(noeud_feuille(racine)){
+				if(cmp<0)
+					racine->gauche=noeud;
+				else
+					racine->droit=noeud;	
+				return(OK);
+		}
+	if(cmp==0)
+		return -1; 
+	else if(cmp <0){
+		noeud_inserer(noeud,racine->gauche,comparer,affecter);
+            	return(OK);
+        }
+	else{
+		noeud_inserer(noeud,racine->droit,comparer,affecter);
+		return(OK);
+	}
 }
 
 
@@ -210,6 +226,18 @@ booleen_t noeud_supprimer( void * etiquette ,			 /* valeur a supprimer de l'arbr
 			   err_t (*detruire)( void * e ) , /* Fonction de destruction des etiquettes */
 			   int (*comparer)(const void * n1 , const void * n2) ) 
 {
+	int cmp=comparer(etiquette,(*racine)->etiquette);
+	if(cmp==0)
+		detruire(racine);
+		
+	else if(cmp <0){
+		noeud_supprimer(etiquette,&((*racine)->gauche),affecter,detruire,comparer);
+            	return(OK);
+        }
+	else{
+		noeud_supprimer(etiquette,&((*racine)->droit),affecter,detruire,comparer);
+		return(OK);
+	}	
   return(VRAI) ;
 }
 

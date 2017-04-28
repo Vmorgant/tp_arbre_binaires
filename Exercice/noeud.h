@@ -100,7 +100,7 @@ booleen_t noeud_rechercher( noeud_t ** result ,
  */
 
 extern err_t noeud_inserer( noeud_t * noeud ,			           /* noeud a inserer */  
-			    noeud_t ** racine  ,	                   /* Racine de l'arbre de recherche (peut etre modifiee) */
+			    noeud_t * racine  ,	                   /* Racine de l'arbre de recherche (peut etre modifiee) */
 			    int (*comparer)(const void * n1 , const void * n2) ,       /* Fonction de comparaison des etiquettes */
 			    err_t (*affecter)( void * e1 , void * e2 ) ) ; /* Fonction d'affectation des etiquettes */ 
 

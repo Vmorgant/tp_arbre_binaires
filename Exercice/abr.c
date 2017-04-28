@@ -143,7 +143,7 @@ void abr_afficher( const abr_t * arbre ,
 		  void (*fonction_affichage)(const void *) ,
 		  const ab_parcours_t parcours ) 
 {
-		printf("Affichage de %i elements \n", arbre->taille);
+	printf("Affichage de %i elements \n", arbre->taille);
         abr_afficher_bis(arbre->racine, fonction_affichage, parcours, 0);
 }
 
@@ -152,51 +152,17 @@ void abr_afficher( const abr_t * arbre ,
  * Insertion d'une valeur dans un ABR
  */
  
-static
-err_t abr_inserer_bis(abr_t *arbre, noeud_t * noeud,void * etiquette ) /*tmp = NULL à chaque appel*/
-{ 
-	    int cmp=arbre->comparer(&(etiquette),(&(noeud->etiquette)));
-	    noeud_t * tmp=NULL;
-		if(noeud_feuille(noeud)){
-				tmp=noeud_creer(etiquette,NULL,NULL,arbre->affecter);
-				
-				/*Rattachement du noeud à la racine*/
-				if(cmp<0)
-					noeud->gauche=tmp;
-				else
-					noeud->droit=tmp;	
-				abr_taille_incrementer(arbre);
-				return(OK);
-		}
-		if(cmp==0)
-			return -1; 
-		else if(cmp <0){
-			abr_inserer_bis(arbre,noeud->gauche,etiquette);
-            return(OK);
-        }
-		else{
-			abr_inserer_bis(arbre,noeud->droit,etiquette);
-			return(OK);
-		}
-}
+
 extern
 err_t abr_inserer( abr_t * arbre  ,
 		   void * etiquette ) 
 { 
 	noeud_t * noeud;
-	
-	/*Insertion du premier element*/
-	if(abr_vide(arbre)){
-		noeud=noeud_creer(etiquette,NULL,NULL,arbre->affecter);
-		arbre->racine=noeud;
-		abr_taille_incrementer(arbre);
-	}
-	else{
-		abr_inserer_bis(arbre,arbre->racine,etiquette);
-		
-	}
-		
-  return(OK) ; 
+	noeud=noeud_creer(etiquette,NULL,NULL,arbre->affecter);
+	if(noeud_inserer(noeud,arbre->racine,arbre->comparer,arbre->affecter))
+		return(OK) ; 
+	else
+		return  (-1);
 }
 
 
@@ -207,9 +173,10 @@ err_t abr_inserer( abr_t * arbre  ,
 extern 
 booleen_t abr_supprimer( abr_t * arbre ,
 			 void * etiquette ) 
-{
-  booleen_t trouve = FAUX ;
-
+			 
+{	booleen_t trouve=FAUX;
+  	noeud_supprimer(etiquette,&(arbre->racine),arbre->affecter,arbre->detruire,arbre->comparer);
+	
   return(trouve) ;
 } 
 
